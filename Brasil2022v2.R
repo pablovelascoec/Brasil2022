@@ -1,4 +1,4 @@
-#https://stackoverflow.com/questions/54852379/display-data-values-on-geom-line
+
 setwd("/Users/Acer/Desktop/dashboardelectoral/shiny_workshops/Brasil2022")
 
 library(ggplot2)
