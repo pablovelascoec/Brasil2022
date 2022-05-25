@@ -39,7 +39,10 @@ data_ends$date <- as.Date("2022-05-18")
 surveysbrnew %>%
   ggplot(aes(x = date, y = voteper, color=candidate, na.rm=TRUE)) +
   geom_smooth( se=FALSE, size=1.1) +
-  stat_smooth(aes(fill=votes),method = "loess", size=1, alpha=0.2)+
+  stat_smooth(aes(fill=votes),method = "loess", size=1, alpha=0.3)+
+  scale_color_manual(values=c('green4', 'darkblue', 'darkgoldenrod2', 'firebrick2', 'cornsilk4', 'grey')) +
+  scale_fill_manual(values=c('green4', 'darkblue', 'darkgoldenrod2', 'firebrick2', 'cornsilk4', 'grey')) +
+  scale_linetype_manual(values=c('green4', 'darkblue', 'darkgoldenrod2', 'firebrick2', 'cornsilk4', 'grey')) +
     geom_point() +
   geom_text_repel(
     aes(label = voteper), data = data_ends,
@@ -65,69 +68,20 @@ surveysbrnew %>%
        caption = "OPALC - Sciences Po, by Pablo Velasco Oña") 
 
 
-
-
-  scale_color_manual(values=c('firebrick2', 'darkblue', 'darkgoldenrod2', 'green4', 'cornsilk4')) +
-  scale_fill_manual(values=c('firebrick2', 'darkblue', 'darkgoldenrod2', 'green4', 'cornsilk4')) +
-  scale_linetype_manual(values=c('firebrick2', 'darkblue', 'darkgoldenrod2', 'green4', 'cornsilk4')) +
-  scale_x_continuous(
-  breaks = 1:2,
-  expand = expansion(mult = 0.5)) +
-  
   
 
 
-    
-    
-    
-    
-    
-    
-
-#####alternative way of calling db
-surveybr <- read_excel("surveybr.xlsx")
-#order the values
-surveysbrnew <- surveybr                                         
-surveysbrnew$date <- as.Date(surveysbrnew$date) 
-surveysbrnew$voteper <- percent(surveysbrnew$votes)
-surveysbrnew <- surveysbrnew[order(surveysbrnew$date), ]
-surveysbrnew$error <- 1.96*sqrt(surveysbrnew$votes*(1-surveysbrnew$votes)/surveysbrnew$N)
-surveysbrnew$errsup <- surveysbrnew$votes + surveysbrnew$error
-surveysbrnew$errinf <- surveysbrnew$votes - surveysbrnew$error
-data_ends <- surveysbrnew %>% filter(date == "2022-05-08")
+#####Now sponteneous voting 
 
 
-###this first plot shows a linear tendency and specific error margins are calculated according 
-###to a manual formula taking into account only the size of the sample
-surveysbrnew %>%
-  ggplot(aes(x = date, y = votes, color=candidate, na.rm=TRUE)) +
-  geom_line(na.rm=TRUE) +
-  geom_point() +
-  geom_text_repel(
-    aes(label = voteper), data = data_ends,
-    fontface ="plain", color = "black", size = 3, 
-    force=1, point.padding=unit(1,'lines'),
-    vjust=1,
-    direction='y',
-    nudge_x=0.1,
-    segment.size=0.2,
-    na.rm = TRUE
-  ) + 
-  geom_vline(xintercept = as.numeric(as.Date("2022-10-02"))
-             , color = "black",
-             linetype="dashed",
-             alpha=0.8)+
-  geom_ribbon(aes(ymin=errinf, ymax = errsup , color = candidate), alpha=0.1) +
-  xlab(as.expression(expression( paste("Date") ))) +
-  ylab("Voting intention") +
-  scale_x_date(date_labels = "%Y-%m-%d") +
-  theme_fivethirtyeight() + 
-  labs(title = "Voting intention - Brasil 2022", 
-       subtitle = "Consolidated evolution based on national surveys (Datafolha, Quaest, IPESPE)", 
-       caption = "OPALC - Sciences Po, by Pablo Velasco Oña")
 
-scale_color_manual(values=c('firebrick2', 'darkblue', 'darkgoldenrod2', 'green4', 'cornsilk4')) +
-  
+
+    
+    
+    
+    
+    
+    
 
 
 
