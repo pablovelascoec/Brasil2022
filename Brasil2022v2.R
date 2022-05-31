@@ -63,7 +63,7 @@ surveysbrnew %>%
   ylab("Voting intention") +
   scale_x_date(date_labels = "%Y-%m-%d") +
   theme_fivethirtyeight() + 
-  labs(title = "Voting intention - Brasil 2022", 
+  labs(title = "Voting intention - Brazil 2022", 
        subtitle = "Consolidated evolution based on national surveys (Datafolha, Quaest, IPESPE)", 
        caption = "OPALC - Sciences Po, by Pablo Velasco Oña") 
 
@@ -128,7 +128,7 @@ spontbrnew %>%
   ylab("Voting intention") +
   scale_x_date(date_labels = "%Y-%m-%d") +
   theme_fivethirtyeight() + 
-  labs(title = "Voting intention (spontaneous) - Brasil 2022", 
+  labs(title = "Voting intention (spontaneous) - Brazil 2022", 
        subtitle = "Consolidated evolution based on national surveys (Datafolha, Quaest, IPESPE)", 
        caption = "OPALC - Sciences Po, by Pablo Velasco Oña") 
 
